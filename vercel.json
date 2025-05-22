@@ -6,7 +6,7 @@
   ],
   "headers": [
     {
-      "source": "/api/(.*)",
+      "source": "/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "https://igsaver-hoz.web.app" },
         { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
