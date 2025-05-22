@@ -40,7 +40,7 @@ app.post('/fetch-instagram', async (req, res) => {
 });
 
 module.exports = app;
-module.exports.handler = serverless(app);
+// module.exports.handler = serverless(app);
 // app.listen(PORT, () => {
 //     console.log(`🚀 Server running on http://localhost:${PORT}`);
 // });
