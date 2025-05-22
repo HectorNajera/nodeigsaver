@@ -7,7 +7,7 @@ const serverless = require("serverless-http");
 const app = express();
 // ✅ Setup CORS
 app.use(cors({
-    origin: '*',
+    origin: 'https://igsaver-hoz.web.app',
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 }));
