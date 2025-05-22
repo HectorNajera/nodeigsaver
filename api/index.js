@@ -10,7 +10,13 @@ const serverless = require("serverless-http");
 // app.use(cors());
 // app.use(bodyParser.json());
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: '*',  // Or: ['http://localhost:4200', 'https://your-frontend.vercel.app']
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type']
+}));
+app.options('*', cors()); // Pre-flight OPTIONS request
+
 app.use(express.json());
 
 app.get("/api/hello", (req, res) => {
