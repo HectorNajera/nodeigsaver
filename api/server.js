@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { instagramGetUrl } = require('instagram-url-direct'); // ✅ fixed here
+const serverless = require("serverless-http");
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,9 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get("/api/hello", (req, res) => {
+    res.json({ message: "Hello from Express on Vercel!" });
+});
 app.post('/instagram', async (req, res) => {
     const { url } = req.body;
 
@@ -31,6 +35,7 @@ app.post('/instagram', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+module.exports.handler = serverless(app);
+// app.listen(PORT, () => {
+//     console.log(`🚀 Server running on http://localhost:${PORT}`);
+// });
