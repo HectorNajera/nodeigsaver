@@ -1,9 +1,17 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/handler.js", "use": "@vercel/node" }
+    { "src": "api/index.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "api/handler.js" }
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "https://igsaver-hoz.web.app",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    }
   ]
 }
