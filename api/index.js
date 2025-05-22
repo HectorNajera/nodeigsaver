@@ -15,11 +15,11 @@ app.use(cors({
 app.options('*', cors());  // ✅ Handle preflight
 app.use(express.json());
 
-app.get("/api/hello", (req, res) => {
+app.get("/hello", (req, res) => {
     res.json({ message: "Hello from Express on Vercel!" });
 });
 
-app.post('/api/fetch-instagram', async (req, res) => {
+app.post('/fetch-instagram', async (req, res) => {
     const { url } = req.body;
 
     if (!url) {
