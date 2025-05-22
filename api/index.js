@@ -4,19 +4,15 @@ const bodyParser = require('body-parser');
 const { instagramGetUrl } = require('instagram-url-direct'); // ✅ fixed here
 const serverless = require("serverless-http");
 
-// const app = express();
-// const PORT = 3000;
-//
-// app.use(cors());
-// app.use(bodyParser.json());
 const app = express();
+// ✅ Setup CORS
 app.use(cors({
-    origin: '*',  // Or: ['http://localhost:4200', 'https://your-frontend.vercel.app']
+    origin: '*',
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 }));
-app.options('*', cors()); // Pre-flight OPTIONS request
 
+app.options('*', cors());  // ✅ Handle preflight
 app.use(express.json());
 
 app.get("/api/hello", (req, res) => {
@@ -44,6 +40,7 @@ app.post('/api/fetch-instagram', async (req, res) => {
     }
 });
 
+module.exports = app;
 module.exports.handler = serverless(app);
 // app.listen(PORT, () => {
 //     console.log(`🚀 Server running on http://localhost:${PORT}`);
