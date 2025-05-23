@@ -6,7 +6,7 @@ const serverless = require('serverless-http');
 const app = express();
 
 app.use(cors({
-    origin: 'https://igsaver-hoz.web.app',
+    origin: ['https://igsaver-hoz.web.app', 'http://localhost:4200'],
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 }));
@@ -42,3 +42,11 @@ app.post('/api/fetch-instagram', async (req, res) => {
 //new
 module.exports = app;
 module.exports.handler = serverless(app);
+
+// // For local development
+// if (require.main === module) {
+//     const PORT = process.env.PORT || 3000;
+//     app.listen(PORT, () => {
+//         console.log(`🚀 Server running locally on http://localhost:${PORT}`);
+//     });
+// }
